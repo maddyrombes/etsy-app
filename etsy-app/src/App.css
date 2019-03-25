@@ -1,13 +1,31 @@
+body {
+  font-family: 'Mukta', sans-serif;
+  color: #212121;
+  background-color: #eaeaea
+}
+
 img {
   height: 200px;
 }
 
 h1 {
   font-size: 40px;
+  margin-bottom: 3px;
 }
 
-body {
-  font-family: 'Mukta', sans-serif;
+.logo {
+  width: 100px;
+  height: 100px;
+  margin: 30px;
+}
+
+.header {
+  display: flex;
+}
+
+.right-header {
+  float: right;
+  margin-left: 90px;
 }
 
 ul {
@@ -23,5 +41,11 @@ h2 {
 }
 
 .sidebar {
+  float: left;
+  margin: 15px;
+  line-height: 18px;
+}
 
+.main {
+  float: right;
 }

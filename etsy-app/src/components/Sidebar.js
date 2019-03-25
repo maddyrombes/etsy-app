@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Sidebar extends Component {
   render() {
     return (
-      <div class="sidebar">
+      <div className="sidebar">
         <h2>GENDER</h2>
         <ul>
             <li>Men</li>

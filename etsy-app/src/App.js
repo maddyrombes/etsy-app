@@ -4,6 +4,8 @@ import Header from "./components/Header"
 import Sidebar from "./components/Sidebar"
 // import { Route, Link } from "react-router-dom";
 
+const key = process.env.REACT_APP_API_KEY 
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -19,7 +21,6 @@ class App extends Component {
   }
 
   getListings() {
-    const key = ""
     fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=500&includes=MainImage`)
     .then((response) => response.json())
     .then(data => {
@@ -32,7 +33,7 @@ class App extends Component {
 
   displayListings() {
     return this.state.data.map(listing => {
-      return <img src={listing.MainImage.url_fullxfull} />
+      return <img key={listing.listing_id} alt="listing" src={listing.MainImage.url_fullxfull} />
     })
   }
 
