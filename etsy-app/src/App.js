@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-// import axios from 'axios';
+import Header from "./components/Header"
+import Sidebar from "./components/Sidebar"
 // import { Route, Link } from "react-router-dom";
 
 class App extends Component {
@@ -18,45 +19,29 @@ class App extends Component {
   }
 
   getListings() {
-    let api = 'https://openapi.etsy.com/v2/listings/active?api_key=xvfwflurl2nkaogrgw3w7263&limit=500'
-    // const listing = axios(api);
-    // const data = listing.results;
-    // this.setState({
-    //   data: data
-    // }, console.log(listing))
-    fetch(api, {
-      method: "GET",
-      mode: "cors",
-      cache: "no-cache",
-      headers: {
-        "Accept": "application/json"
-      }
-    })
-    .then((response) => response.json ? console.log('string') : console.log('empty'))
-    .then(response => {
-      console.log(response.json())
-      // return response.json()
-    })
+    const key = ""
+    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=500&includes=MainImage`)
+    .then((response) => response.json())
     .then(data => {
-        console.log(data)
+      this.setState({
+        data: data.results
+      })
     })
-    .catch(e => console.log(e))
-    // .then(this.displayListings())
+    .then(this.displayListings())
   }
 
-
   displayListings() {
-    // console.log(this.state.data)
-    // return this.state.data.map(listing => {
-    //   return <li>{listing.title}</li>})
+    return this.state.data.map(listing => {
+      return <img src={listing.MainImage.url_fullxfull} />
+    })
   }
 
   render() {
     return (
       <div>
-        <ul>
-          {this.displayListings()}
-        </ul>
+        <Header />
+        <Sidebar />
+        {this.displayListings()}
       </div>
     );
   }
