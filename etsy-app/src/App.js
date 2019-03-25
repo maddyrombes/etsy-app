@@ -10,10 +10,12 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: []
+      data: [],
+      keyword: 'the'
     }
     this.getListings = this.getListings.bind(this)
     this.displayListings = this.displayListings.bind(this)
+    this.handleInput = this.handleInput.bind(this)
   }
 
   componentDidMount() {
@@ -21,7 +23,7 @@ class App extends Component {
   }
 
   getListings() {
-    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=500&includes=MainImage`)
+    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=500&includes=MainImage&keywords=${this.state.keyword}`)
     .then((response) => response.json())
     .then(data => {
       this.setState({
@@ -37,12 +39,26 @@ class App extends Component {
     })
   }
 
+  handleInput(e) {
+    e.preventDefault() 
+    this.setState({
+      keyword: e.target.value
+    })
+  }
+
+  handleClick(e) {
+    e.preventDefault()
+    this.getListings()
+  }
+
   render() {
     return (
       <div>
-        <Header />
+        <Header handleInput={this.handleInput} handleClick={this.handleClick} getListings={this.getListings} />
         <Sidebar />
-        {this.displayListings()}
+        <div className="images">
+          {this.displayListings()}
+        </div>
       </div>
     );
   }
