@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+// import axios from 'axios';
 // import { Route, Link } from "react-router-dom";
 
 class App extends Component {
@@ -18,13 +19,23 @@ class App extends Component {
 
   getListings() {
     let api = 'https://openapi.etsy.com/v2/listings/active?api_key=xvfwflurl2nkaogrgw3w7263&limit=500'
+    // const listing = axios(api);
+    // const data = listing.results;
+    // this.setState({
+    //   data: data
+    // }, console.log(listing))
     fetch(api, {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache",
       headers: {
         "Accept": "application/json"
       }
     })
+    .then((response) => response.json ? console.log('string') : console.log('empty'))
     .then(response => {
-      return response.json()
+      console.log(response.json())
+      // return response.json()
     })
     .then(data => {
         console.log(data)
@@ -32,8 +43,6 @@ class App extends Component {
     .catch(e => console.log(e))
     // .then(this.displayListings())
   }
-
-  // .then((response) => response.length ? console.log('string') : console.log('empty'))
 
 
   displayListings() {
