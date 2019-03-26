@@ -13,14 +13,24 @@ class App extends Component {
     this.state = {
       data: [],
       keyword: 'craft',
-      category: '',
+      category: ', japan',
       price: '',
+      isFlipped: false,
     }
     this.getListings = this.getListings.bind(this)
     this.displayListings = this.displayListings.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
     this.flipListing = this.flipListing.bind(this)
     this.flipBack = this.flipBack.bind(this)
+    this.jewelryCat = this.jewelryCat.bind(this)
+    this.clothingCat = this.clothingCat.bind(this)
+    this.homeCat = this.homeCat.bind(this)
+    this.weddingCat = this.weddingCat.bind(this)
+    this.toysCat = this.toysCat.bind(this)
+    this.artCat = this.artCat.bind(this)
+    this.craftCat = this.craftCat.bind(this)
+    this.vintageCat = this.vintageCat.bind(this)
+    this.giftsCat = this.giftsCat.bind(this)
   }
 
   componentDidMount() {
@@ -28,7 +38,7 @@ class App extends Component {
   }
 
   getListings() {
-    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=50&includes=MainImage&keywords=${this.state.keyword}`)
+    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=50&includes=MainImage&keywords=${this.state.keyword}${this.state.category}`)
     .then((response) => response.json())
     .then(data => {
       this.setState({
@@ -39,48 +49,44 @@ class App extends Component {
   }
 
   flipListing(e) {
-    const toggleText = document.querySelector('.toggle-text')
-    toggleText.style.display = 'block'
     e.target.style.opacity = '0.2'
   }
 
   flipBack(e) {
-    const toggleText = document.querySelector('.toggle-text')
-    toggleText.style.display = 'none'
     e.target.style.opacity = '1'
   }
 
   displayListings() {
     return (
       <div className='container'>
-      {this.state.data.map(listing => {
-      return (
-        <div className='overlay-container'>
-          <img 
-            onClick={(e) => { e.target.style.opacity === '1' ?
-              this.flipListing(e) :
-              this.flipBack(e)
-            }}
-            className="image"
+        {this.state.data.map(listing => {
+        return (
+          <div 
+            className='overlay-container'             
             key={listing.listing_id} 
-            alt="listing" 
-            src={listing.MainImage.url_fullxfull} 
-          />
-          <div className="toggle-text">
-            <p className="title-text">Title</p>
-            <p className="price-text">Price</p>
-            <p className="url-text">URL</p>
+            onClick={(e) => { e.target.style.opacity === '1' ?
+                this.flipListing(e) :
+                this.flipBack(e)
+              }}
+          >
+            <img 
+              className="image"
+              alt="listing" 
+              src={listing.MainImage.url_fullxfull} 
+            />
+            <div className="toggle-text">
+              <p className="title-text">{listing.title}</p>
+              <p className="price-text">{listing.price} {listing.currency_code}</p>
+              <a className="url-text" href={listing.url}>Buy it on Etsy</a>
+            </div>
           </div>
-        </div>
-      )})}
-      </div>)
-  }
+        )})}
+      </div>
+  )}
 
   handleSearch(e) {
     e.preventDefault() 
-    this.setState({
-      keyword: e.target.value
-    })
+    this.setState({ keyword: e.target.value })
   }
 
   handleButtonClick(e) {
@@ -88,11 +94,85 @@ class App extends Component {
     this.getListings()
   }
 
+  jewelryCat(e) {
+    e.preventDefault()
+    this.setState({ category: ", jewelry, accessories" })
+    this.getListings()
+    // e.target.style.fontWeight = 'bold'
+  }
+
+  clothingCat(e) {
+    e.preventDefault()
+    this.setState({ category: ", clothing, shoes" })
+    this.getListings()
+    // e.target.style.fontWeight = 'bold'
+  }
+
+  homeCat(e) {
+    e.preventDefault()
+    this.setState({ category: ", home, living" })
+    this.getListings()
+    // e.target.style.fontWeight = 'bold'
+  }
+
+  weddingCat(e) {
+    e.preventDefault()
+    this.setState({ category: ", wedding, party" })
+    this.getListings()
+    // e.target.style.fontWeight = 'bold'
+  }
+
+  toysCat(e) {
+    e.preventDefault()
+    this.setState({ category: ", toys, entertainment" })
+    this.getListings()
+    // e.target.style.fontWeight = 'bold'
+  }
+
+  artCat(e) {
+    e.preventDefault()
+    this.setState({ category: ", art, collectibles" })
+    this.getListings()
+    // e.target.style.fontWeight = 'bold'
+  }
+
+  craftCat(e) {
+    e.preventDefault()
+    this.setState({ category: ", craft" })
+    this.getListings()
+    // e.target.style.fontWeight = 'bold'
+  }
+
+  vintageCat(e) {
+    e.preventDefault()
+    this.setState({ category: ", vintage" })
+    this.getListings()
+    // e.target.style.fontWeight = 'bold'
+  }
+
+  giftsCat(e) {
+    e.preventDefault()
+    this.setState({ category: ", gifts" })
+    this.getListings()
+    // e.target.style.fontWeight = 'bold'
+  }
+
   render() {
     return (
       <div>
-        <Header handleSearch={this.handleSearch} handleButtonClick={this.handleButtonClick} getListings={this.getListings} />
-        <Sidebar />
+        <Header 
+          handleSearch={this.handleSearch} handleButtonClick={this.handleButtonClick} getListings={this.getListings} />
+        <Sidebar 
+          jewelryCat={this.jewelryCat}
+          clothingCat={this.clothingCat}
+          homeCat={this.homeCat}
+          weddingCat={this.weddingCat}
+          toysCat={this.toysCat}
+          artCat={this.artCat}
+          craftCat={this.craftCat}
+          vintageCat={this.vintageCat}
+          giftsCat={this.giftsCat}
+          />
         <Main displayListings={this.displayListings} />
       </div>
     );

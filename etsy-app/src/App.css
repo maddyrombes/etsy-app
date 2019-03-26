@@ -20,37 +20,40 @@ body {
 }
 
 .toggle-text {
-  display: none;
+  display: block;
 }
 
 .title-text {
-  font-size: 30px;
+  font-size: 16px;
   position: absolute;
   bottom: 140px;
   left: 20px;
   background-color: #F6B03A;
   color: white;
   padding: 5px;
+  text-align: left;
 }
 
 .price-text {
-  font-size: 20px;
+  font-size: 14px;
   position: absolute;
   bottom: 110px;
   left: 20px;
   background-color: #F6B03A;
   color: white;
   padding: 5px;
+  text-align: left;
 }
 
 .url-text {
-  font-size: 20px;
+  font-size: 14px;
   position: absolute;
-  bottom: 70px;
+  bottom: 90px;
   left: 20px;
   background-color: #F6B03A;
   color: white;
   padding: 5px;
+  text-align: left;
 }
 
 .image {
