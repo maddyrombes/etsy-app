@@ -8,6 +8,7 @@ img {
   height: 230px;
   margin: 8px;
   border-radius: 15px;
+  opacity: 1;
 }
 
 .images {
@@ -44,6 +45,8 @@ input {
 
 button {
   margin-left: 10px;
+  height: 20px;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 ul {

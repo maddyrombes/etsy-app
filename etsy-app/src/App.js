@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Main from './components/Main'
 import Header from "./components/Header"
 import Sidebar from "./components/Sidebar"
 // import { Route, Link } from "react-router-dom";
@@ -11,11 +12,14 @@ class App extends Component {
     super(props)
     this.state = {
       data: [],
-      keyword: 'the'
+      keyword: 'craft',
+      category: '',
+      price: '',
     }
     this.getListings = this.getListings.bind(this)
     this.displayListings = this.displayListings.bind(this)
-    this.handleInput = this.handleInput.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
+    this.flipListing = this.flipListing.bind(this)
   }
 
   componentDidMount() {
@@ -23,7 +27,7 @@ class App extends Component {
   }
 
   getListings() {
-    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=500&includes=MainImage&keywords=${this.state.keyword}`)
+    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=50&includes=MainImage&keywords=${this.state.keyword}&findAllTopCategory`)
     .then((response) => response.json())
     .then(data => {
       this.setState({
@@ -33,20 +37,34 @@ class App extends Component {
     .then(this.displayListings())
   }
 
+  flipListing(e) {
+    e.target.style.opacity = '0.2'
+  }
+
+  flipBack(e) {
+    e.target.style.opacity = '1'
+  }
+
   displayListings() {
     return this.state.data.map(listing => {
-      return <img key={listing.listing_id} alt="listing" src={listing.MainImage.url_fullxfull} />
+      return <img 
+        style={{opacity: this.state.opacity}} 
+        onClick={(e) => this.flipListing(e)} 
+        key={listing.listing_id} 
+        alt="listing" 
+        src={listing.MainImage.url_fullxfull} 
+      />
     })
   }
 
-  handleInput(e) {
+  handleSearch(e) {
     e.preventDefault() 
     this.setState({
       keyword: e.target.value
     })
   }
 
-  handleClick(e) {
+  handleButtonClick(e) {
     e.preventDefault()
     this.getListings()
   }
@@ -54,11 +72,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header handleInput={this.handleInput} handleClick={this.handleClick} getListings={this.getListings} />
+        <Header handleSearch={this.handleSearch} handleButtonClick={this.handleButtonClick} getListings={this.getListings} />
         <Sidebar />
-        <div className="images">
-          {this.displayListings()}
-        </div>
+        <Main displayListings={this.displayListings} />
       </div>
     );
   }

@@ -9,8 +9,8 @@ export default class Header extends Component {
         <img className="logo" alt="shop-logo" src={logo} />
         <div className="right-header">
           <h1>EtsyBoard</h1>
-          <input onChange={(e) => this.props.handleInput(e)} type="text" name="search" input={this.props.keyword} />
-          <button onClick={(e) => this.props.handleClick(e)}>Search</button>
+          <input onChange={(e) => this.props.handleSearch(e)} type="text" name="search" input={this.props.keyword} />
+          <button onClick={(e) => this.props.handleButtonClick(e)}>Search</button>
         </div>
       </div>
     )
