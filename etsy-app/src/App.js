@@ -20,6 +20,7 @@ class App extends Component {
     this.displayListings = this.displayListings.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
     this.flipListing = this.flipListing.bind(this)
+    this.flipBack = this.flipBack.bind(this)
   }
 
   componentDidMount() {
@@ -48,8 +49,10 @@ class App extends Component {
   displayListings() {
     return this.state.data.map(listing => {
       return <img 
-        style={{opacity: this.state.opacity}} 
-        onClick={(e) => this.flipListing(e)} 
+        onClick={(e) => { e.target.style.opacity === '1' ?
+          this.flipListing(e) :
+          this.flipBack(e)
+        }}
         key={listing.listing_id} 
         alt="listing" 
         src={listing.MainImage.url_fullxfull} 
