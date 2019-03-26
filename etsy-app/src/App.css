@@ -11,7 +11,7 @@ body {
   justify-content: center;
   align-items: center;
   align-content: center;
-  margin: 8px 8px 8px 200px;
+  margin: 80px 8px 8px 200px;
 }
 
 .overlay-container {
@@ -20,7 +20,7 @@ body {
 }
 
 .toggle-text {
-  display: block;
+  display: none;
 }
 
 .title-text {
@@ -72,6 +72,7 @@ h1 {
   width: 170px;
   height: 170px;
   margin: 10px;
+  position: fixed;
 }
 
 .header {
@@ -82,7 +83,7 @@ h1 {
 
 .right-header {
   float: right;
-  margin-left: 60px;
+  margin-left: 230px;
 }
 
 input {
@@ -114,7 +115,7 @@ h2 {
 
 .sidebar {
   float: left;
-  margin: 50px 0px 15px 15px;
+  margin: 120px 0px 15px 15px;
   line-height: 19px;
   position: fixed;
 }
