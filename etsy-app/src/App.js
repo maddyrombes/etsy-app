@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   getListings() {
-    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=50&includes=MainImage&keywords=${this.state.keyword}&findAllTopCategory`)
+    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=50&includes=MainImage&keywords=${this.state.keyword}`)
     .then((response) => response.json())
     .then(data => {
       this.setState({
@@ -39,25 +39,41 @@ class App extends Component {
   }
 
   flipListing(e) {
+    const toggleText = document.querySelector('.toggle-text')
+    toggleText.style.display = 'block'
     e.target.style.opacity = '0.2'
   }
 
   flipBack(e) {
+    const toggleText = document.querySelector('.toggle-text')
+    toggleText.style.display = 'none'
     e.target.style.opacity = '1'
   }
 
   displayListings() {
-    return this.state.data.map(listing => {
-      return <img 
-        onClick={(e) => { e.target.style.opacity === '1' ?
-          this.flipListing(e) :
-          this.flipBack(e)
-        }}
-        key={listing.listing_id} 
-        alt="listing" 
-        src={listing.MainImage.url_fullxfull} 
-      />
-    })
+    return (
+      <div className='container'>
+      {this.state.data.map(listing => {
+      return (
+        <div className='overlay-container'>
+          <img 
+            onClick={(e) => { e.target.style.opacity === '1' ?
+              this.flipListing(e) :
+              this.flipBack(e)
+            }}
+            className="image"
+            key={listing.listing_id} 
+            alt="listing" 
+            src={listing.MainImage.url_fullxfull} 
+          />
+          <div className="toggle-text">
+            <p className="title-text">Title</p>
+            <p className="price-text">Price</p>
+            <p className="url-text">URL</p>
+          </div>
+        </div>
+      )})}
+      </div>)
   }
 
   handleSearch(e) {

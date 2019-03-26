@@ -4,15 +4,60 @@ body {
   background-color: white;
 }
 
-img {
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 8px 8px 8px 200px;
+}
+
+.overlay-container {
+  position: relative;
+  text-align: center;
+}
+
+.toggle-text {
+  display: none;
+}
+
+.title-text {
+  font-size: 30px;
+  position: absolute;
+  bottom: 140px;
+  left: 20px;
+  background-color: #F6B03A;
+  color: white;
+  padding: 5px;
+}
+
+.price-text {
+  font-size: 20px;
+  position: absolute;
+  bottom: 110px;
+  left: 20px;
+  background-color: #F6B03A;
+  color: white;
+  padding: 5px;
+}
+
+.url-text {
+  font-size: 20px;
+  position: absolute;
+  bottom: 70px;
+  left: 20px;
+  background-color: #F6B03A;
+  color: white;
+  padding: 5px;
+}
+
+.image {
   height: 230px;
   margin: 8px;
   border-radius: 15px;
   opacity: 1;
-}
-
-.images {
-  margin: 0px 8px 8px 50px;
 }
 
 h1 {
@@ -29,11 +74,12 @@ h1 {
 .header {
   display: flex;
   margin-bottom: -30px;
+  margin-left: 20px;
 }
 
 .right-header {
   float: right;
-  margin-left: 30px;
+  margin-left: 60px;
 }
 
 input {
@@ -65,10 +111,7 @@ h2 {
 
 .sidebar {
   float: left;
-  margin: 15px;
+  margin: 50px 0px 15px 15px;
   line-height: 19px;
-}
-
-.main {
-  float: right;
+  position: fixed;
 }
