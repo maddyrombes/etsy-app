@@ -8,7 +8,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   align-content: center;
   margin: 80px 8px 8px 200px;
@@ -20,6 +20,14 @@ body {
 }
 
 .toggle-text {
+  display: none;
+}
+
+#toggle-text-show {
+  display: block;
+}
+
+#toggle-text-hide {
   display: none;
 }
 

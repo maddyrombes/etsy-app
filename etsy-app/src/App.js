@@ -50,10 +50,12 @@ class App extends Component {
 
   flipListing(e) {
     e.target.style.opacity = '0.2'
+    e.target.nextSibling.id = "toggle-text-show"  
   }
 
   flipBack(e) {
     e.target.style.opacity = '1'
+    e.target.nextSibling.id = "toggle-text-hide"
   }
 
   displayListings() {
@@ -77,7 +79,7 @@ class App extends Component {
             <div className="toggle-text">
               <p className="title-text">{listing.title}</p>
               <p className="price-text">{listing.price} {listing.currency_code}</p>
-              <a className="url-text" href={listing.url}>Buy it on Etsy</a>
+              <a className="url-text" target="blank"href={listing.url}>Buy it on Etsy</a>
             </div>
           </div>
         )})}
@@ -94,74 +96,66 @@ class App extends Component {
     this.getListings()
   }
 
-  jewelryCat(e) {
-    e.preventDefault()
-    this.setState({ category: ", jewelry, accessories" })
+  async jewelryCat(e) {
+    e.target.style.fontWeight = 'bold'
+    await this.setState({ category: ", jewelry, accessories" })
     this.getListings()
-    // e.target.style.fontWeight = 'bold'
   }
 
-  clothingCat(e) {
-    e.preventDefault()
-    this.setState({ category: ", clothing, shoes" })
+  async clothingCat(e) {
+    e.target.style.fontWeight = 'bold'
+    await this.setState({ category: ", clothing, shoes" })
     this.getListings()
-    // e.target.style.fontWeight = 'bold'
   }
 
-  homeCat(e) {
-    e.preventDefault()
-    this.setState({ category: ", home, living" })
+  async homeCat(e) {
+    e.target.style.fontWeight = 'bold'
+    await this.setState({ category: ", home, living" })
     this.getListings()
-    // e.target.style.fontWeight = 'bold'
   }
 
-  weddingCat(e) {
-    e.preventDefault()
-    this.setState({ category: ", wedding, party" })
+  async weddingCat(e) {
+    e.target.style.fontWeight = 'bold'
+    await this.setState({ category: ", wedding, party" })
     this.getListings()
-    // e.target.style.fontWeight = 'bold'
   }
 
-  toysCat(e) {
-    e.preventDefault()
-    this.setState({ category: ", toys, entertainment" })
+  async toysCat(e) {
+    e.target.style.fontWeight = 'bold'
+    await this.setState({ category: ", toys, entertainment" })
     this.getListings()
-    // e.target.style.fontWeight = 'bold'
   }
 
-  artCat(e) {
-    e.preventDefault()
-    this.setState({ category: ", art, collectibles" })
+  async artCat(e) {
+    e.target.style.fontWeight = 'bold'
+    await this.setState({ category: ", art, collectibles" })
     this.getListings()
-    // e.target.style.fontWeight = 'bold'
   }
 
-  craftCat(e) {
-    e.preventDefault()
-    this.setState({ category: ", craft" })
+  async craftCat(e) {
+    e.target.style.fontWeight = 'bold'
+    await this.setState({ category: ", craft" })
     this.getListings()
-    // e.target.style.fontWeight = 'bold'
   }
 
-  vintageCat(e) {
-    e.preventDefault()
-    this.setState({ category: ", vintage" })
+  async vintageCat(e) {
+    e.target.style.fontWeight = 'bold'
+    await this.setState({ category: ", vintage" })
     this.getListings()
-    // e.target.style.fontWeight = 'bold'
   }
 
-  giftsCat(e) {
-    e.preventDefault()
-    this.setState({ category: ", gifts" })
+  async giftsCat(e) {
+    e.target.style.fontWeight = 'bold'
+    await this.setState({ category: ", gifts" })
     this.getListings()
-    // e.target.style.fontWeight = 'bold'
   }
 
   render() {
     return (
       <div>
         <Header 
-          handleSearch={this.handleSearch} handleButtonClick={this.handleButtonClick} getListings={this.getListings} />
+          handleSearch={this.handleSearch} handleButtonClick={this.handleButtonClick} getListings={this.getListings} 
+        />
         <Sidebar 
           jewelryCat={this.jewelryCat}
           clothingCat={this.clothingCat}
@@ -172,7 +166,7 @@ class App extends Component {
           craftCat={this.craftCat}
           vintageCat={this.vintageCat}
           giftsCat={this.giftsCat}
-          />
+        />
         <Main displayListings={this.displayListings} />
       </div>
     );

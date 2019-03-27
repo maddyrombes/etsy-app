@@ -7,7 +7,7 @@ export default class Sidebar extends Component {
       <div className="sidebar">
         <h2>CATEGORY</h2>
         <ul>
-            <li onClick={(e) => this.props.jewelryCat(e)}>Jewelry and Accessories</li>
+            <li onClick={this.props.jewelryCat}>Jewelry and Accessories</li>
             <li onClick={(e) => this.props.clothingCat(e)}>Clothing and Shoes</li>
             <li onClick={(e) => this.props.homeCat(e)}>Home and Living</li>
             <li onClick={(e) => this.props.weddingCat(e)}>Wedding and Party</li>
