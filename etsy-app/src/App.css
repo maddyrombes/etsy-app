@@ -1,0 +1,147 @@
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #212121;
+  background-color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  margin: 80px 8px 8px 200px;
+}
+
+.overlay-container {
+  position: relative;
+  text-align: center;
+}
+
+.toggle-text {
+  display: none;
+}
+
+#toggle-text-show {
+  display: block;
+}
+
+#toggle-text-hide {
+  display: none;
+}
+
+.title-text {
+  font-size: 16px;
+  position: absolute;
+  bottom: 140px;
+  left: 20px;
+  background-color: #F6B03A;
+  color: white;
+  padding: 5px;
+  text-align: left;
+}
+
+.price-text {
+  font-size: 14px;
+  position: absolute;
+  bottom: 110px;
+  left: 20px;
+  background-color: #F6B03A;
+  color: white;
+  padding: 5px;
+  text-align: left;
+}
+
+.url-text {
+  font-size: 14px;
+  position: absolute;
+  bottom: 90px;
+  left: 20px;
+  background-color: #F6B03A;
+  color: white;
+  padding: 5px;
+  text-align: left;
+}
+
+.image {
+  height: 230px;
+  margin: 8px;
+  border-radius: 15px;
+  opacity: 1;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 3px;
+}
+
+.logo {
+  width: 170px;
+  height: 170px;
+  margin: 10px;
+  position: fixed;
+}
+
+.header {
+  display: flex;
+  margin-bottom: -30px;
+  margin-left: 20px;
+}
+
+.right-header {
+  float: right;
+  margin-left: 230px;
+}
+
+input {
+  margin-top: 15px;
+  border-radius: 5px;
+  width: 160px;
+  height: 20px;
+}
+
+button {
+  margin-left: 10px;
+  height: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+ul {
+  list-style: none;
+  margin-left: -30px;
+}
+
+h1 {
+  letter-spacing: 3px;
+}
+
+h2 {
+  font-size: 15px;
+  margin-bottom: -10px;
+}
+
+.sidebar {
+  float: left;
+  margin: 130px 0px 15px 15px;
+  line-height: 22px;
+  position: fixed;
+}
+
+.loading {
+  font-size: 30px;
+  height: 30%;
+  width: 110%;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+}
+
+.copyright {
+  font-size: 14px;
+  float: left;
+  margin-top: 670px;
+  margin-left: 20px;
+  position: fixed;
+}
