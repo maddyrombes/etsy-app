@@ -11,7 +11,6 @@ body {
   width: 88%;
   max-width: 1000px;
   float: right;
-	/* margin: 10px auto; */
 }
 
 .image {
@@ -92,6 +91,7 @@ body {
   margin: 8px;
   border-radius: 15px;
   opacity: 1;
+
 }
 
 .overlay-container {
@@ -235,8 +235,15 @@ h2 {
   position: fixed;
 }
 
+.about {
+  float: left;
+  margin-top: 250px;
+  margin-left: 10px;
+  position: fixed;
+  line-height: 2px;
 li:hover {
   font-weight: bold;
+
 }
 
 .next-btn {
@@ -246,5 +253,5 @@ li:hover {
   float: right;
   margin-bottom: 20px;
   margin-right: 40px;
-  border-radius: 10px;
+  border-radius: 10px; 
 }
