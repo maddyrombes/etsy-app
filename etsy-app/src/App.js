@@ -3,6 +3,8 @@ import './App.css';
 import Main from './components/Main'
 import Header from "./components/Header"
 import Sidebar from "./components/Sidebar"
+import Loading from "./components/Loading"
+import Copyright from "./components/Copyright"
 // import { Route, Link } from "react-router-dom";
 
 const key = process.env.REACT_APP_API_KEY 
@@ -66,9 +68,9 @@ class App extends Component {
           <div 
             className='overlay-container'             
             key={listing.listing_id} 
-            onClick={(e) => { e.target.style.opacity === '1' ?
-                this.flipListing(e) :
-                this.flipBack(e)
+            onClick={(e) => { e.target.style.opacity === '0.2' ?
+                this.flipBack(e) :
+                this.flipListing(e)
               }}
           >
             <img 
@@ -153,21 +155,23 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header 
-          handleSearch={this.handleSearch} handleButtonClick={this.handleButtonClick} getListings={this.getListings} 
-        />
-        <Sidebar 
-          jewelryCat={this.jewelryCat}
-          clothingCat={this.clothingCat}
-          homeCat={this.homeCat}
-          weddingCat={this.weddingCat}
-          toysCat={this.toysCat}
-          artCat={this.artCat}
-          craftCat={this.craftCat}
-          vintageCat={this.vintageCat}
-          giftsCat={this.giftsCat}
-        />
-        <Main displayListings={this.displayListings} />
+          <Header 
+            handleSearch={this.handleSearch} handleButtonClick={this.handleButtonClick} getListings={this.getListings} 
+          />
+          <Sidebar 
+            jewelryCat={this.jewelryCat}
+            clothingCat={this.clothingCat}
+            homeCat={this.homeCat}
+            weddingCat={this.weddingCat}
+            toysCat={this.toysCat}
+            artCat={this.artCat}
+            craftCat={this.craftCat}
+            vintageCat={this.vintageCat}
+            giftsCat={this.giftsCat}
+          />
+          <Copyright />
+          <Main displayListings={this.displayListings} />
+          <Loading />
       </div>
     );
   }

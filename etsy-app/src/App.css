@@ -123,7 +123,25 @@ h2 {
 
 .sidebar {
   float: left;
-  margin: 120px 0px 15px 15px;
-  line-height: 19px;
+  margin: 130px 0px 15px 15px;
+  line-height: 22px;
+  position: fixed;
+}
+
+.loading {
+  font-size: 30px;
+  height: 30%;
+  width: 110%;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+}
+
+.copyright {
+  font-size: 14px;
+  float: left;
+  margin-top: 670px;
+  margin-left: 20px;
   position: fixed;
 }
