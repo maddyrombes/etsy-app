@@ -87,6 +87,13 @@ body {
   }
 }
 
+.image {
+  width: 230px;
+  margin: 8px;
+  border-radius: 15px;
+  opacity: 1;
+}
+
 .overlay-container {
   position: relative;
   text-align: center;
@@ -187,6 +194,10 @@ button {
 ul {
   list-style: none;
   margin-left: -30px;
+}
+
+li:hover {
+  font-weight: bold;
 }
 
 h1 {
