@@ -15,7 +15,7 @@ class App extends Component {
     this.state = {
       data: [],
       keyword: 'craft',
-      category: ', japan',
+      category: ', a',
       price: '',
       isFlipped: false,
     }
@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   getListings() {
-    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=50&includes=MainImage&keywords=${this.state.keyword}${this.state.category}`)
+    fetch(`https://thingproxy.freeboard.io/fetch/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=50&includes=MainImage&keywords=${this.state.keyword}${this.state.category}`)
     .then((response) => response.json())
     .then(data => {
       this.setState({

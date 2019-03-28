@@ -9,9 +9,16 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   align-content: center;
   margin: 80px 8px 8px 200px;
+}
+
+.image {
+  width: 230px;
+  margin: 8px;
+  border-radius: 15px;
+  opacity: 1;
 }
 
 .overlay-container {
@@ -64,13 +71,6 @@ body {
   text-align: left;
 }
 
-.image {
-  height: 230px;
-  margin: 8px;
-  border-radius: 15px;
-  opacity: 1;
-}
-
 h1 {
   font-size: 40px;
   margin-bottom: 3px;
@@ -110,6 +110,10 @@ button {
 ul {
   list-style: none;
   margin-left: -30px;
+}
+
+li:hover {
+  font-weight: bold;
 }
 
 h1 {
