@@ -11,6 +11,7 @@ body {
   width: 88%;
   max-width: 1000px;
   float: right;
+	/* margin: 10px auto; */
 }
 
 .image {
@@ -86,9 +87,17 @@ body {
   }
 }
 
+.image {
+  width: 230px;
+  margin: 8px;
+  border-radius: 15px;
+  opacity: 1;
+}
+
 .overlay-container {
   position: relative;
   text-align: center;
+  word-wrap: break-word
 }
 
 .toggle-text {
@@ -112,6 +121,7 @@ body {
   color: white;
   padding: 5px;
   text-align: left;
+  pointer-events: none;
 }
 
 .price-text {
@@ -123,6 +133,7 @@ body {
   color: white;
   padding: 5px;
   text-align: left;
+  pointer-events: none;
 }
 
 .url-text {
@@ -159,6 +170,14 @@ h1 {
   margin-left: 230px;
 }
 
+.about {
+  float: left;
+  margin-top: 250px;
+  margin-left: 10px;
+  position: fixed;
+  line-height: 2px;
+}
+
 input {
   margin-top: 15px;
   border-radius: 5px;
@@ -175,6 +194,10 @@ button {
 ul {
   list-style: none;
   margin-left: -30px;
+}
+
+li:hover {
+  font-weight: bold;
 }
 
 h1 {
@@ -218,6 +241,10 @@ h2 {
   margin-left: 10px;
   position: fixed;
   line-height: 2px;
+}
+
+li:hover {
+  font-weight: bold;
 }
 
 .next-btn {
