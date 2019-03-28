@@ -5,13 +5,13 @@ body {
 }
 
 .container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
-  align-content: flex-start;
-  margin: 80px 8px 8px 200px;
+  margin: 100px 150px 8px 210px;
+  column-width: 200px;
+	column-gap: 10px;
+  width: 88%;
+  max-width: 1000px;
+  float: right;
+	/* margin: 10px auto; */
 }
 
 .image {
@@ -19,6 +19,72 @@ body {
   margin: 8px;
   border-radius: 15px;
   opacity: 1;
+}
+
+@media only screen and (max-width: 1390px) {
+  .container {
+    margin: 100px 120px 8px 210px;
+  }
+}
+
+@media only screen and (max-width: 1370px) {
+  .container {
+    margin: 100px 100px 8px 210px;
+  }
+}
+
+@media only screen and (max-width: 1350px) {
+  .container {
+    margin: 100px 80px 8px 210px;
+  }
+}
+
+@media only screen and (max-width: 1330px) {
+  .container {
+    margin: 100px 60px 8px 210px;
+  }
+}
+
+@media only screen and (max-width: 1310px) {
+  .container {
+    margin: 100px 40px 8px 210px;
+  }
+}
+
+@media only screen and (max-width: 1290px) {
+  .container {
+    margin: 100px 20px 8px 210px;
+  }
+}
+
+@media only screen and (max-width: 1270px) {
+  .container {
+    width: 78%;
+  }
+}
+
+@media only screen and (max-width: 1210px) {
+  .container {
+    width: 68%;
+  }
+}
+
+@media only screen and (max-width: 1070px) {
+  .container {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 930px) {
+  .container {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 710px) {
+  .container {
+    width: 50%;
+  }
 }
 
 .overlay-container {
@@ -140,13 +206,14 @@ h2 {
 }
 
 .loading {
-  font-size: 30px;
+  display: none;
+  /* font-size: 30px;
   height: 30%;
   width: 110%;
   display: flex;
   position: fixed;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .copyright {
