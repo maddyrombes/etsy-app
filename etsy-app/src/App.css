@@ -92,6 +92,7 @@ body {
   margin: 8px;
   border-radius: 15px;
   opacity: 1;
+
 }
 
 .overlay-container {
@@ -255,4 +256,5 @@ li:hover {
   margin-bottom: 20px;
   margin-right: 40px;
   border-radius: 10px;
+  border-radius: 10px; 
 }
