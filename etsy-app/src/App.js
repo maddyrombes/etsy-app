@@ -15,7 +15,7 @@ class App extends Component {
     this.state = {
       data: [],
       keyword: 'craft',
-      category: ', japan',
+      category: ', modern',
       price: '',
       isFlipped: false,
     }
@@ -50,16 +50,6 @@ class App extends Component {
     .then(this.displayListings())
   }
 
-  flipListing(e) {
-    e.target.style.opacity = '0.2'
-    e.target.nextSibling.id = "toggle-text-show"  
-  }
-
-  flipBack(e) {
-    e.target.style.opacity = '1'
-    e.target.nextSibling.id = "toggle-text-hide"
-  }
-
   displayListings() {
     return (
       <div className='container'>
@@ -68,9 +58,9 @@ class App extends Component {
           <div 
             className='overlay-container'             
             key={listing.listing_id} 
-            onClick={(e) => { e.target.style.opacity === '0.2' ?
-                this.flipBack(e) :
-                this.flipListing(e)
+            onClick={(e) => { this.state.isFlipped === false ?
+                this.flipListing(e) :
+                this.flipBack(e)
               }}
           >
             <img 
@@ -81,12 +71,32 @@ class App extends Component {
             <div className="toggle-text">
               <p className="title-text">{listing.title}</p>
               <p className="price-text">{listing.price} {listing.currency_code}</p>
-              <a className="url-text" target="blank"href={listing.url}>Buy it on Etsy</a>
+              <a onClick={(e) => this.stopProp(e)} className="url-text" target="blank" href={listing.url}>Buy it on Etsy</a>
             </div>
           </div>
         )})}
       </div>
   )}
+
+  stopProp(e) {
+    e.stopPropagation()
+  }
+
+  flipListing(e) {
+    e.stopPropagation()
+    this.setState({ isFlipped: true }) 
+    console.log('flipping')
+    e.target.style.opacity = '0.2'
+    e.target.nextSibling.id = "toggle-text-show"  
+  }
+
+  flipBack(e) {
+    e.stopPropagation()
+    this.setState({ isFlipped: false }) 
+    console.log('flipping back')
+    e.target.style.opacity = '1'
+    e.target.nextSibling.id = "toggle-text-hide"
+  }
 
   handleSearch(e) {
     e.preventDefault() 

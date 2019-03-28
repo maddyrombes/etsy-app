@@ -40,6 +40,7 @@ body {
   color: white;
   padding: 5px;
   text-align: left;
+  pointer-events: none;
 }
 
 .price-text {
@@ -51,6 +52,7 @@ body {
   color: white;
   padding: 5px;
   text-align: left;
+  pointer-events: none;
 }
 
 .url-text {
@@ -144,4 +146,8 @@ h2 {
   margin-top: 670px;
   margin-left: 20px;
   position: fixed;
+}
+
+li:hover {
+  font-weight: bold;
 }
