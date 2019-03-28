@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import About from './About'
+import { Route, Link } from "react-router-dom";
 
 export default class Sidebar extends Component {
 
@@ -17,6 +19,14 @@ export default class Sidebar extends Component {
             <li onClick={(e) => this.props.vintageCat(e)}>Vintage</li>
             <li onClick={(e) => this.props.giftsCat(e)}>Gifts</li>
         </ul>
+        <div>
+          <nav className="about">
+            <Link to="/about">About</Link>
+          </nav>
+          <main>
+            <Route exact path="/about" component={About}/>
+          </main>
+        </div> 
       </div>
     )
   }

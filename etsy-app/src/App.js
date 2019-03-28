@@ -5,7 +5,7 @@ import Header from "./components/Header"
 import Sidebar from "./components/Sidebar"
 import Loading from "./components/Loading"
 import Copyright from "./components/Copyright"
-// import { Route, Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 const key = process.env.REACT_APP_API_KEY 
 
@@ -18,6 +18,7 @@ class App extends Component {
       category: ', japan',
       price: '',
       isFlipped: false,
+      offset: 0,
     }
     this.getListings = this.getListings.bind(this)
     this.displayListings = this.displayListings.bind(this)
@@ -33,6 +34,7 @@ class App extends Component {
     this.craftCat = this.craftCat.bind(this)
     this.vintageCat = this.vintageCat.bind(this)
     this.giftsCat = this.giftsCat.bind(this)
+    this.handleNextButton = this.handleNextButton.bind(this)
   }
 
   componentDidMount() {
@@ -40,7 +42,7 @@ class App extends Component {
   }
 
   getListings() {
-    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=50&includes=MainImage&keywords=${this.state.keyword}${this.state.category}`)
+    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=60&offset=${this.state.offset}&includes=MainImage&keywords=${this.state.keyword}${this.state.category}`)
     .then((response) => response.json())
     .then(data => {
       this.setState({
@@ -152,6 +154,15 @@ class App extends Component {
     this.getListings()
   }
 
+  handleNextButton(e) {
+    e.preventDefault()
+    this.setState({
+      offset: this.state.offset + 50
+    })
+    this.getListings()
+    this.displayListings()
+  }
+
   render() {
     return (
       <div>
@@ -170,7 +181,10 @@ class App extends Component {
             giftsCat={this.giftsCat}
           />
           <Copyright />
-          <Main displayListings={this.displayListings} />
+          <Main 
+            displayListings={this.displayListings}
+            handleNextButton={this.handleNextButton}
+          />
           <Loading />
       </div>
     );
