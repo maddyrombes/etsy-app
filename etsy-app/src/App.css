@@ -9,14 +9,22 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
-  align-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
   margin: 80px 8px 8px 200px;
+}
+
+.image {
+  width: 230px;
+  margin: 8px;
+  border-radius: 15px;
+  opacity: 1;
 }
 
 .overlay-container {
   position: relative;
   text-align: center;
+  word-wrap: break-word
 }
 
 .toggle-text {
@@ -66,13 +74,6 @@ body {
   text-align: left;
 }
 
-.image {
-  height: 230px;
-  margin: 8px;
-  border-radius: 15px;
-  opacity: 1;
-}
-
 h1 {
   font-size: 40px;
   margin-bottom: 3px;
@@ -94,6 +95,14 @@ h1 {
 .right-header {
   float: right;
   margin-left: 230px;
+}
+
+.about {
+  float: left;
+  margin-top: 250px;
+  margin-left: 10px;
+  position: fixed;
+  line-height: 2px;
 }
 
 input {
@@ -150,4 +159,14 @@ h2 {
 
 li:hover {
   font-weight: bold;
+}
+
+.next-btn {
+  width: 90px;
+  height: 50px;
+  font-size: 20px;
+  float: right;
+  margin-bottom: 20px;
+  margin-right: 40px;
+  border-radius: 10px;
 }
