@@ -5,7 +5,6 @@ import Header from "./components/Header"
 import Sidebar from "./components/Sidebar"
 import Loading from "./components/Loading"
 import Copyright from "./components/Copyright"
-// import { Route, Link } from "react-router-dom";
 
 const key = process.env.REACT_APP_API_KEY 
 
@@ -15,9 +14,10 @@ class App extends Component {
     this.state = {
       data: [],
       keyword: 'craft',
-      category: ', a',
+      category: ', modern',
       price: '',
       isFlipped: false,
+      offset: 0,
     }
     this.getListings = this.getListings.bind(this)
     this.displayListings = this.displayListings.bind(this)
@@ -33,6 +33,7 @@ class App extends Component {
     this.craftCat = this.craftCat.bind(this)
     this.vintageCat = this.vintageCat.bind(this)
     this.giftsCat = this.giftsCat.bind(this)
+    this.handleNextButton = this.handleNextButton.bind(this)
   }
 
   componentDidMount() {
@@ -40,7 +41,7 @@ class App extends Component {
   }
 
   getListings() {
-    fetch(`https://thingproxy.freeboard.io/fetch/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=50&includes=MainImage&keywords=${this.state.keyword}${this.state.category}`)
+    fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=60&offset=${this.state.offset}&includes=MainImage&keywords=${this.state.keyword}${this.state.category}`)
     .then((response) => response.json())
     .then(data => {
       this.setState({
@@ -48,16 +49,6 @@ class App extends Component {
       })
     })
     .then(this.displayListings())
-  }
-
-  flipListing(e) {
-    e.target.style.opacity = '0.2'
-    e.target.nextSibling.id = "toggle-text-show"  
-  }
-
-  flipBack(e) {
-    e.target.style.opacity = '1'
-    e.target.nextSibling.id = "toggle-text-hide"
   }
 
   displayListings() {
@@ -68,9 +59,9 @@ class App extends Component {
           <div 
             className='overlay-container'             
             key={listing.listing_id} 
-            onClick={(e) => { e.target.style.opacity === '0.2' ?
-                this.flipBack(e) :
-                this.flipListing(e)
+            onClick={(e) => { this.state.isFlipped === false ?
+                this.flipListing(e) :
+                this.flipBack(e)
               }}
           >
             <img 
@@ -81,12 +72,28 @@ class App extends Component {
             <div className="toggle-text">
               <p className="title-text">{listing.title}</p>
               <p className="price-text">{listing.price} {listing.currency_code}</p>
-              <a className="url-text" target="blank"href={listing.url}>Buy it on Etsy</a>
+              <a onClick={(e) => this.stopProp(e)} className="url-text" target="blank" href={listing.url}>Buy it on Etsy</a>
             </div>
           </div>
         )})}
       </div>
   )}
+
+  stopProp(e) {
+    e.stopPropagation()
+  }
+
+  flipListing(e) {
+    this.setState({ isFlipped: true }) 
+    e.target.style.opacity = '0.2'
+    e.target.nextSibling.id = "toggle-text-show"  
+  }
+
+  flipBack(e) {
+    this.setState({ isFlipped: false }) 
+    e.target.style.opacity = '1'
+    e.target.nextSibling.id = "toggle-text-hide"
+  }
 
   handleSearch(e) {
     e.preventDefault() 
@@ -152,6 +159,15 @@ class App extends Component {
     this.getListings()
   }
 
+  handleNextButton(e) {
+    e.preventDefault()
+    this.setState({
+      offset: this.state.offset + 50
+    })
+    this.getListings()
+    this.displayListings()
+  }
+
   render() {
     return (
       <div>
@@ -170,7 +186,10 @@ class App extends Component {
             giftsCat={this.giftsCat}
           />
           <Copyright />
-          <Main displayListings={this.displayListings} />
+          <Main 
+            displayListings={this.displayListings}
+            handleNextButton={this.handleNextButton}
+          />
           <Loading />
       </div>
     );

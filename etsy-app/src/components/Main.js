@@ -5,6 +5,7 @@ export default class Main extends Component {
     return (
       <div>
         {this.props.displayListings()}
+        <button onClick={(e) => this.props.handleNextButton(e)} className="next-btn">Load more</button>
       </div>
     )
   }

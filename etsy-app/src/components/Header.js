@@ -11,8 +11,8 @@ export default class Header extends Component {
           <h1>EtsyBoard</h1>
           <input onChange={(e) => this.props.handleSearch(e)} type="text" name="search" input={this.props.keyword} />
           <button onClick={(e) => this.props.handleButtonClick(e)}>Search</button>
-        </div>
-      </div>
+        </div>     
+    </div>
     )
   }
 }
