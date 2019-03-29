@@ -5,7 +5,6 @@ import Header from "./components/Header"
 import Sidebar from "./components/Sidebar"
 import Loading from "./components/Loading"
 import Copyright from "./components/Copyright"
-import { Route, Link } from "react-router-dom";
 
 const key = process.env.REACT_APP_API_KEY 
 
