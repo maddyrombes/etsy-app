@@ -1,4 +1,4 @@
-# [EtsyBoard](https://github.com/maddyrombes/etsy-app/) (Link TK)
+# [EtsyBoard](https://etsy-board.herokuapp.com/)
 
 ## EtsyBoard is a place to visually explore the listings on Etsy. Browse dynamically by category or searchbar; view cover photos; and click for more information, the price, and a link to its page on Etsy.
 
