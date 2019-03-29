@@ -1,1 +1,1 @@
-# etsy-app
+# EtsyBoard
