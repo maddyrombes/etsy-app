@@ -3,7 +3,6 @@ import './App.css';
 import Main from './components/Main'
 import Header from "./components/Header"
 import Sidebar from "./components/Sidebar"
-import Loading from "./components/Loading"
 import Copyright from "./components/Copyright"
 
 const key = process.env.REACT_APP_API_KEY 
@@ -15,7 +14,6 @@ class App extends Component {
       data: [],
       keyword: 'craft',
       category: ', modern',
-      price: '',
       isFlipped: false,
       offset: 0,
     }
@@ -190,7 +188,6 @@ class App extends Component {
             displayListings={this.displayListings}
             handleNextButton={this.handleNextButton}
           />
-          <Loading />
       </div>
     );
   }
