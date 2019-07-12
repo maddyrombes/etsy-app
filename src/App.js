@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Main from './components/Main'
-import Header from "./components/Header"
-import Sidebar from "./components/Sidebar"
-import Copyright from "./components/Copyright"
+import Main from './components/Main';
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Copyright from "./components/Copyright";
 
-const key = process.env.REACT_APP_API_KEY 
+const key = process.env.REACT_APP_API_KEY
 
 class App extends Component {
   constructor(props) {
@@ -40,61 +40,64 @@ class App extends Component {
 
   getListings() {
     fetch(`https://cors-anywhere.herokuapp.com/https://openapi.etsy.com/v2/listings/active?api_key=${key}&limit=60&offset=${this.state.offset}&includes=MainImage&keywords=${this.state.keyword}${this.state.category}`)
-    .then((response) => response.json())
-    .then(data => {
-      this.setState({
-        data: data.results
+      .then((response) => response.json())
+      .then(data => {
+        this.setState({
+          data: data.results
+        })
       })
-    })
-    .then(this.displayListings())
+      .then(this.displayListings())
   }
 
   displayListings() {
     return (
       <div className='container'>
         {this.state.data.map(listing => {
-        return (
-          <div 
-            className='overlay-container'             
-            key={listing.listing_id} 
-            onClick={(e) => { this.state.isFlipped === false ?
-                this.flipListing(e) :
-                this.flipBack(e)
+          return (
+            <div
+              className='overlay-container'
+              key={listing.listing_id}
+              onClick={(e) => {
+                this.state.isFlipped === false ?
+                  this.flipListing(e) :
+                  this.flipBack(e)
               }}
-          >
-            <img 
-              className="image"
-              alt="listing" 
-              src={listing.MainImage.url_fullxfull} 
-            />
-            <div className="toggle-text">
-              <p className="title-text">{listing.title}</p>
-              <p className="price-text">{listing.price} {listing.currency_code}</p>
-              <a onClick={(e) => this.stopProp(e)} className="url-text" target="blank" href={listing.url}>Buy it on Etsy</a>
+            >
+              <img
+                className="image"
+                alt="listing"
+                src={listing.MainImage.url_fullxfull}
+              />
+              <div className="toggle-text">
+                <p className="title-text">{listing.title}</p>
+                <p className="price-text">{listing.price} {listing.currency_code}</p>
+                <a onClick={(e) => this.stopProp(e)} className="url-text" target="blank" href={listing.url}>Buy it on Etsy</a>
+              </div>
             </div>
-          </div>
-        )})}
+          )
+        })}
       </div>
-  )}
+    )
+  }
 
   stopProp(e) {
     e.stopPropagation()
   }
 
   flipListing(e) {
-    this.setState({ isFlipped: true }) 
+    this.setState({ isFlipped: true })
     e.target.style.opacity = '0.2'
-    e.target.nextSibling.id = "toggle-text-show"  
+    e.target.nextSibling.id = "toggle-text-show"
   }
 
   flipBack(e) {
-    this.setState({ isFlipped: false }) 
+    this.setState({ isFlipped: false })
     e.target.style.opacity = '1'
     e.target.nextSibling.id = "toggle-text-hide"
   }
 
   handleSearch(e) {
-    e.preventDefault() 
+    e.preventDefault()
     this.setState({ keyword: e.target.value })
   }
 
@@ -169,25 +172,25 @@ class App extends Component {
   render() {
     return (
       <div>
-          <Header 
-            handleSearch={this.handleSearch} handleButtonClick={this.handleButtonClick} getListings={this.getListings} 
-          />
-          <Sidebar 
-            jewelryCat={this.jewelryCat}
-            clothingCat={this.clothingCat}
-            homeCat={this.homeCat}
-            weddingCat={this.weddingCat}
-            toysCat={this.toysCat}
-            artCat={this.artCat}
-            craftCat={this.craftCat}
-            vintageCat={this.vintageCat}
-            giftsCat={this.giftsCat}
-          />
-          <Copyright />
-          <Main 
-            displayListings={this.displayListings}
-            handleNextButton={this.handleNextButton}
-          />
+        <Header
+          handleSearch={this.handleSearch} handleButtonClick={this.handleButtonClick} getListings={this.getListings}
+        />
+        <Sidebar
+          jewelryCat={this.jewelryCat}
+          clothingCat={this.clothingCat}
+          homeCat={this.homeCat}
+          weddingCat={this.weddingCat}
+          toysCat={this.toysCat}
+          artCat={this.artCat}
+          craftCat={this.craftCat}
+          vintageCat={this.vintageCat}
+          giftsCat={this.giftsCat}
+        />
+        <Copyright />
+        <Main
+          displayListings={this.displayListings}
+          handleNextButton={this.handleNextButton}
+        />
       </div>
     );
   }
